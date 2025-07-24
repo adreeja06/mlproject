@@ -139,12 +139,38 @@ The application is containerized using Docker and is ready for deployment on any
 The general steps for deployment involve pulling the Docker image from the registry and running it on the cloud instance.
 
 ---
+## 📈 Model Evaluation
 
-## 📈 Model Performance
+Here is a comparison of various regression models evaluated on both training and test sets using key metrics: RMSE (Root Mean Squared Error), MAE (Mean Absolute Error), and R² Score.
 
-The final model selected is a **Ridge Regression** model, which achieved the following performance on the test set:
+| Model                    | Dataset   | RMSE   | MAE    | R² Score |
+|-------------------------|-----------|--------|--------|----------|
+| **Linear Regression**   | Train     | 5.3244 | 4.2671 | 0.8743   |
+|                         | Test      | 5.3960 | 4.2158 | 0.8803   |
+| **Lasso Regression**    | Train     | 6.5938 | 5.2063 | 0.8071   |
+|                         | Test      | 6.5197 | 5.1579 | 0.8253   |
+| **Ridge Regression**    | Train     | 5.3233 | 4.2650 | 0.8743   |
+|                         | Test      | 5.3904 | 4.2111 | 0.8806   |
+| **KNN Regressor**       | Train     | 5.7077 | 4.5167 | 0.8555   |
+|                         | Test      | 7.2530 | 5.6210 | 0.7838   |
+| **Decision Tree**       | Train     | 0.2795 | 0.0187 | 0.9997   |
+|                         | Test      | 7.7421 | 6.1100 | 0.7537   |
+| **Random Forest**       | Train     | 2.2982 | 1.8193 | 0.9766   |
+|                         | Test      | 5.9545 | 4.6169 | 0.8543   |
+| **XGBRegressor**        | Train     | 1.0073 | 0.6875 | 0.9955   |
+|                         | Test      | 6.4733 | 5.0577 | 0.8278   |
+| **CatBoost Regressor**  | Train     | 3.0427 | 2.4054 | 0.9589   |
+|                         | Test      | 6.0086 | 4.6125 | 0.8516   |
+| **AdaBoost Regressor**  | Train     | 5.8873 | 4.8157 | 0.8463   |
+|                         | Test      | 6.0281 | 4.6901 | 0.8507   |
 
--   **R-squared Score**: `[Enter Your R2 Score Here, e.g., 0.88]`
--   **Adjusted R-squared Score**: `[Enter Your Adjusted R2 Score Here]`
+### ✅ Observations
+
+- **Ridge Regression** and **Linear Regression** offer a good balance between training and test performance with high R² scores and low error values.
+- **Random Forest** and **CatBoost** also show strong generalization, though Random Forest slightly overfits.
+- **Decision Tree** severely overfits — perfect train score but poor test performance.
+- **XGBRegressor** shows excellent training results but is overfitting slightly.
+- **KNN** underperforms on the test set relative to training.
+- **Lasso** has comparatively lower performance, indicating it may be underfitting.
 
 This indicates that the model can explain a significant portion of the variance in the student performance data.
